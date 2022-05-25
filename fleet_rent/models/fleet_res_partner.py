@@ -33,7 +33,7 @@ class ResPartner(models.Model):
 
     @api.constrains('email')
     def _check_tenant_email(self):
-        expr = "^[a-zA-Z0-9._+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9.]*\.*[a-zA-Z]{2,4}$"
+        expr = "^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.]*\.*[a-zA-Z]{2,4}$"
         for tenant in self:
             if tenant.email:
                 if re.match(expr, tenant.email) is None:
